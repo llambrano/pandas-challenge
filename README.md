@@ -10,21 +10,19 @@ Using python scripting language to analyze students' district-wide standardized 
 * [Link to Jupyter Notebook](PyCitySchools/standarized-test-results.ipynb)
 
 ---
-## PyCitySchools 
 ![](images/education.png)
+## PyCitySchools 
 
 Creating a Python script for analyzing the financial records of a company. <a name="pycityschools"></a>
 
 ---
 > **Given**
----
 
 Access to every student's math and reading scores `schools_complete.csv`, as well as various information on the schools they attend `schools_complete.csv`. 
 
 ---
 > **Tasks**
 
----
 **District Summary**
 
 Create a high level snapshot (in table form) of the district's key metrics, including:
@@ -38,7 +36,7 @@ Create a high level snapshot (in table form) of the district's key metrics, incl
 * % Passing Reading (The percentage of students that passed reading.)
 * % Overall Passing (The percentage of students that passed math and reading.)
 
-[view solution](summary_district)
+[view solution](#summary_district)
 
 ---
 **School Summary**
