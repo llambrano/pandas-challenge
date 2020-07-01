@@ -379,7 +379,7 @@ Repeat the above breakdown, but this time group schools based on school type (Ch
     math_scores.index.name = "school_name"
     ```
 
-3. Format numbers 
+3. Format numbers and align headers
     ```
     math_scores.style.format({'9th': '{:.1f}', 
                           "10th": '{:.1f}', 
@@ -391,5 +391,50 @@ Repeat the above breakdown, but this time group schools based on school type (Ch
 </details>
 
 [Back to the top](#top)
+
+---
+<a name="reading_scores_by_grade"></a>
+**Reading Scores by Grade**
+
+![Image Desc](Images/06_reading_scores_by_grade.png)
+
+<details><summary>click here to view steps</summary>
+
+1. Calculate average of reading scores by grade 
+    
+    ```
+    ninth_reading = students_df.loc[students_df['grade'] == '9th'].groupby('school_name')["reading_score"].mean()
+    tenth_reading = students_df.loc[students_df['grade'] == '10th'].groupby('school_name')["reading_score"].mean()
+    eleventh_reading = students_df.loc[students_df['grade'] == '11th'].groupby('school_name')["reading_score"].mean()
+    twelfth_reading = students_df.loc[students_df['grade'] == '12th'].groupby('school_name')["reading_score"].mean()
+    ```
+2. Assign values to dataframe and set index to `school name`
+    ```
+    reading_scores = pd.DataFrame({
+        "9th": ninth_reading,
+        "10th": tenth_reading,
+        "11th": eleventh_reading,
+        "12th": twelfth_reading
+    })
+
+    reading_scores = reading_scores[['9th', '10th', '11th', '12th']]
+    reading_scores.index.name = "School Name"
+    reading_scores.reset_index(inplace=True)
+
+3. Format numbers and align headers
+    ```
+    reading_scores.style.format({'9th': '{:.1f}', 
+                          "10th": '{:.1f}', 
+                          "11th": "{:.1f}", 
+                          "12th": "{:.1f}",
+                          'School Names': 'School Names'}).hide_index()
+    ```
+ 
+[Back to 'Reading Scores by Grade' solution](#reading_scores_by_grade)
+</details>
+
+[Back to the top](#top)
+
+
 
 
