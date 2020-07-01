@@ -113,14 +113,12 @@ Repeat the above breakdown, but this time group schools based on school type (Ch
 [Back to the top](#top)
 
 ---
-> ### Solution <a name="solution"></a>
+> ### Solution 
 ---
+<a name="summary_district"></a>
+**District Summary** 
 
-**District Summary**
-
-<ins>Final Output</ins>
-
-![School Summary](images/01_district_summary.png)
+![School Summary](Images/01_district_summary.png)
 
 <details><summary>click arrow down to view steps</summary>
 
@@ -140,7 +138,7 @@ Repeat the above breakdown, but this time group schools based on school type (Ch
     school_students_df
     ```
 
-![Files Combined](/images/01a_combined_files.png)
+![Files Combined](/Images/01a_combined_files.png)
 
 3. Calculate totals, averages, and % passing scores
 
@@ -207,6 +205,6 @@ Repeat the above breakdown, but this time group schools based on school type (Ch
 
 <ins>Final Output</ins>
 
-![Files Combined](images/02_school_summary.png)
+![Files Combined](Images/02_school_summary.png)
 
 [Back to the top](#top)
