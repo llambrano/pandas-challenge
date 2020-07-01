@@ -69,15 +69,21 @@ Create a table that highlights the top 5 performing schools based on % Overall P
 * % Passing Reading (The percentage of students that passed reading.)
 * % Overall Passing (The percentage of students that passed math and reading.)
 
+[view solution](#top_schools)
+
 ---
 **Bottom Performing Schools (By % Overall Passing)**
 
 Create a table that highlights the bottom 5 performing schools based on % Overall Passing. Include all of the same metrics as above.
 
+[view solution](#bottom_schools)
+
 ---
 **Math Scores by Grade** 
 
 Create a table that lists the average Math Score for students of each grade level (9th, 10th, 11th, 12th) at each school.
+
+[view solution](#bottom_schools)
 
 ---
 **Reading Scores by Grade**
@@ -399,35 +405,17 @@ Repeat the above breakdown, but this time group schools based on school type (Ch
 ![Image Desc](Images/06_reading_scores_by_grade.png)
 
 <details><summary>click here to view steps</summary>
----
-<a name="anchor"></a>
-**title**
 
-![Image Desc](image_path.png)
-
-<details><summary>click here to view steps</summary>
-
-1. step 1
-
-    ```
-    code here
-    ```
- 
-[Back to 'title' solution](#anchor)
-</details>
-
-[Back to the top](#top)
-1. Calculate average of reading scores by grade 
-    
+1. Calculate average of reading scores by grade
     ```
     ninth_reading = students_df.loc[students_df['grade'] == '9th'].groupby('school_name')["reading_score"].mean()
     tenth_reading = students_df.loc[students_df['grade'] == '10th'].groupby('school_name')["reading_score"].mean()
     eleventh_reading = students_df.loc[students_df['grade'] == '11th'].groupby('school_name')["reading_score"].mean()
     twelfth_reading = students_df.loc[students_df['grade'] == '12th'].groupby('school_name')["reading_score"].mean()
-    ```
+
 2. Assign values to dataframe and set index to `school name`
     ```
-    reading_scores = pd.DataFrame({
+        reading_scores = pd.DataFrame({
         "9th": ninth_reading,
         "10th": tenth_reading,
         "11th": eleventh_reading,
@@ -440,14 +428,15 @@ Repeat the above breakdown, but this time group schools based on school type (Ch
 
 3. Format numbers and align headers
     ```
-    reading_scores.style.format({'9th': '{:.1f}', 
-                          "10th": '{:.1f}', 
-                          "11th": "{:.1f}", 
-                          "12th": "{:.1f}",
-                          'School Names': 'School Names'}).hide_index()
+    reading_scores.style.format({
+        '9th': '{:.1f}', 
+        "10th": '{:.1f}', 
+        "11th": "{:.1f}", 
+        "12th": "{:.1f}",
+        'School Names': 'School Names'}).hide_index()
     ```
- 
 [Back to 'Reading Scores by Grade' solution](#reading_scores_by_grade)
+
 </details>
 
 [Back to the top](#top)
@@ -504,6 +493,114 @@ Repeat the above breakdown, but this time group schools based on school type (Ch
         'Overall Passing Rate': '{:.1%}'}).hide_index() 
  
 [Back to 'Scores by School Spending' solution](#scores_by_school_spending)
+</details>
+
+[Back to the top](#top)
+
+---
+<a name="scores_by_school_size"></a>
+**Scores by School Size**
+
+![Image Desc](Images/08_scores_by_school_size.png)
+
+<details><summary>click here to view steps</summary>
+
+1. Create bins
+
+    ```
+    bins = [0, 999, 1999, 100000]
+    bin_name = ['Small (<1000)', 'Medium (1000-2000)', 'Large (>2000)']
+    school_students_df ['size_bins'] = pd.cut(school_students_df['size'], bins, labels = bin_name)
+    by_size = school_students_df.groupby('size_bins')
+
+2. Calculate average scores and group by `size_bins`
+    ```
+    avg_math = by_size['math_score'].mean()
+    avg_read = by_size['math_score'].mean()
+    pass_math = school_students_df[school_students_df['math_score'] >= 70].groupby('size_bins')['Student ID'].count()/by_size['Student ID'].count()
+    pass_read = school_students_df[school_students_df['reading_score'] >= 70].groupby('size_bins')['Student ID'].count()/by_size['Student ID'].count()
+    overall = school_students_df[(school_students_df['reading_score'] >= 70) & (school_students_df['math_score'] >= 70)].groupby('size_bins')['Student ID'].count()/by_size['Student ID'].count()
+
+3. Assign values to datafrane
+    ```
+    scores_by_sc_size = pd.DataFrame({
+        'Average Math Score': avg_math,
+        'Average Reading Score': avg_read,
+        '% Passing Math': pass_math,
+        '% Passing Reading': pass_read,
+        'Overall Passing Rate': overall         
+    })
+
+4. Set `Total Students` of school as `index`
+    ```
+    scores_by_sc_size.index.name = 'Total Students'
+    scores_by_sc_size.reset_index(inplace=True)
+    ```
+
+5. Format numbers and align headers
+    ```
+    scores_by_sc_size.style.format({
+        'Average Math Score': '{:.1f}', 
+        'Average Reading Score': '{:.1f}', 
+        '% Passing Math': '{:.1%}', 
+        '% Passing Reading':'{:.1%}', 
+        'Overall Passing Rate': '{:.1%}'}).hide_index()
+ 
+[Back to 'Scores by School Size' solution](#scores_by_school_size)
+</details>
+
+[Back to the top](#top)
+
+---
+<a name="scores_by_school_type"></a>
+**Scores by School type**
+
+![Image Desc](Images/09_scores_by_school_type.png)
+
+<details><summary>click here to view steps</summary>
+
+1. Group schools by `type`
+
+    ```
+    by_type = school_students_df.groupby("type")
+    ```
+
+2. Calculate average scores and group by `type`
+    ```
+    avg_math = by_type['math_score'].mean()
+    avg_read = by_type['math_score'].mean()
+    pass_math = school_students_df[school_students_df['math_score'] >= 70].groupby('type')['Student ID'].count()/by_type['Student ID'].count()
+    pass_read = school_students_df[school_students_df['reading_score'] >= 70].groupby('type')['Student ID'].count()/by_type['Student ID'].count()
+    overall = school_students_df[(school_students_df['reading_score'] >= 70) & (school_students_df['math_score'] >= 70)].groupby('type')['Student ID'].count()/by_type['Student ID'].count()
+    ```
+
+3. Assign values to datafrane
+    ```
+    scores_by_sc_type = pd.DataFrame({
+        "Average Math Score": avg_math,
+        "Average Reading Score": avg_read,
+        '% Passing Math': pass_math,
+        '% Passing Reading': pass_read,
+        "Overall Passing Rate": overall})
+    ```
+
+4. Set `type of school` of school as `index`
+    ```
+    scores_by_sc_type.index.name = "Type of School"
+    scores_by_sc_type.reset_index
+    ```
+
+5. Format numbers and align headers
+    ```
+    scores_by_sc_type.style.format({
+        'Average Math Score': '{:.1f}', 
+        'Average Reading Score': '{:.1f}', 
+        '% Passing Math': '{:.1%}', 
+        '% Passing Reading':'{:.1%}', 
+        'Overall Passing Rate': '{:.1%}'}).hide_index()
+    ```
+ 
+[Back to 'Scores by School type' solution](#scores_by_school_type)
 </details>
 
 [Back to the top](#top)
