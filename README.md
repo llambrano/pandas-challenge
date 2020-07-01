@@ -116,7 +116,9 @@ Repeat the above breakdown, but this time group schools based on school type (Ch
 > ### Solution <a name="solution"></a>
 ---
 
-<details><summary>**District Summary** <a name="summary_district"></a></summary>
+<details><summary>**District Summary**</summary>
+
+
 
 <ins>Final Output</ins>
 
