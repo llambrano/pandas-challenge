@@ -10,7 +10,7 @@ Using python scripting language to analyze students' district-wide standardized 
 * [Link to Jupyter Notebook](PyCitySchools/standarized-test-results.ipynb)
 
 ---
-![](images/education.png)
+![](/images/education.png)
 ## PyCitySchools 
 
 Creating a Python script for analyzing the financial records of a company. <a name="pycityschools"></a>
@@ -116,11 +116,13 @@ Repeat the above breakdown, but this time group schools based on school type (Ch
 > ### Solution <a name="solution"></a>
 ---
 
-<details><summary>District Summary</summary>
+**District Summary**
 
 <ins>Final Output</ins>
 
-![School Summary](images/01_district_summary.png)
+![School Summary](/images/01_district_summary.png)
+
+<details><summary>click arrow down to view steps</summary>
 
 <ins>Steps</ins>
 
@@ -140,7 +142,7 @@ Repeat the above breakdown, but this time group schools based on school type (Ch
     school_students_df
     ```
 
-![Files Combined](images/01a_combined_files.png)
+![Files Combined](/images/01a_combined_files.png)
 
 3. Calculate totals, averages, and % passing scores
 
