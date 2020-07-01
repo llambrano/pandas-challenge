@@ -13,8 +13,6 @@ Using python scripting language to analyze students' district-wide standardized 
 ![](/Images/education.png)
 ## PyCitySchools 
 
-Creating a Python script for analyzing the financial records of a company. <a name="pycityschools"></a>
-
 ---
 > **Given**
 
@@ -198,7 +196,7 @@ Repeat the above breakdown, but this time group schools based on school type (Ch
 
 </details>
 
-[Back to the top](#top)
+[Back to solution](#summary_district)
 
 ---
 **School Summary**
