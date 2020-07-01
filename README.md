@@ -120,7 +120,7 @@ Repeat the above breakdown, but this time group schools based on school type (Ch
 
 ![School Summary](Images/01_district_summary.png)
 
-<details><summary>click arrow down to view steps</summary>
+<details><summary>click here view steps</summary>
 
 1. Import modules, read source files
 
@@ -138,7 +138,7 @@ Repeat the above breakdown, but this time group schools based on school type (Ch
     school_students_df
     ```
 
-![Files Combined](/Images/01a_combined_files.png)
+![Files Combined](Images/01a_combined_files.png)
 
 3. Calculate totals, averages, and % passing scores
 
@@ -196,7 +196,7 @@ Repeat the above breakdown, but this time group schools based on school type (Ch
     summary_df
     ```
 
-[Back to solution](#summary_district)
+[Back to District Summary solution](#summary_district)
 </details>
 
 [Back to the top](#top)
@@ -205,11 +205,83 @@ Repeat the above breakdown, but this time group schools based on school type (Ch
 <a name="school_summary"></a>
 **School Summary**
 
-![Files Combined](Images/02_school_summary.png)
+![Files Combined](Images/01a_combined_files.png)
 
-<details><summary>click arrow down to view steps</summary>
+<details><summary>click here to view steps</summary>
 
-[Back to solution](#school_summary)
+1. Group data by school
+    
+    ```
+    sc_school = school_students_df.set_index('school_name').groupby(['school_name'])
+    ```
+
+2. Calculate totals, averages, and % passing scores
+
+    ```
+    # school Name
+    sc_school = school_students_df.set_index('school_name').groupby(['school_name'])
+
+    # school type
+    sc_type = schools_df.set_index('school_name')['type']
+
+    # Total Students
+    sc_students = sc_school['Student ID'].count()
+
+    # Total School Budget
+    sc_budget = schools_df.set_index('school_name')['budget']
+
+    # Per Student Budget
+    st_budget = schools_df.set_index('school_name')['budget']/schools_df.set_index('school_name')['size']
+
+    # Average Math Score
+    avg_math = sc_school['math_score'].mean()
+
+    # Average Reading Score
+    avg_read = sc_school['reading_score'].mean()
+
+    # % Passing Math
+    pass_math = school_students_df[school_students_df['math_score'] >= 70].groupby('school_name')['Student ID'].count()/sc_students 
+
+    # % Passing Reading
+    pass_read = school_students_df[school_students_df['reading_score'] >= 70].groupby('school_name')['Student ID'].count()/sc_students
+
+    # % Overall Passing (The percentage of students that passed math and reading.)
+    overall = school_students_df[(school_students_df['reading_score'] >= 70) & (school_students_df['math_score'] >= 70)].groupby('school_name')['Student ID'].count()/sc_students
+
+3. Assign values to dataframe
+
+    '''
+    summary_sc = pd.DataFrame({
+        'School Type': sc_type, 
+        'Total Students' : sc_students,
+        'Total School Budget': sc_budget,
+        'Per Student Budget' : st_budget,
+        'Average Math Score': avg_math,
+        'Average Reading Score' : avg_read,
+        '% Passing Math': pass_math,
+        '% Passing Reading': pass_read,
+        'Overall Passing Rate': overall
+    })
+    ```
+
+4. Format numbers 
+
+    ```
+    summary_sc.style.format({'Total Students': '{:,}',
+                           'Total School Budget': '${:,}', 
+                           'Per Student Budget': '${:.0f}', 
+                           'Average Math Score': '{:.1f}', 
+                           'Average Reading Score': '{:.1f}', 
+                           'Total School Budget': '${:,}', 
+                           '% Passing Math': '{:.1%}', 
+                           '% Passing Reading': '{:.1%}', 
+                           'Overall Passing Rate': '{:.1%}'})
+
+    summary_sc
+    ```
+
+
+[Back to School Summary solution](#school_summary)
 </details>
 
 [Back to the top](#top)
