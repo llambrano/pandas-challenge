@@ -399,7 +399,24 @@ Repeat the above breakdown, but this time group schools based on school type (Ch
 ![Image Desc](Images/06_reading_scores_by_grade.png)
 
 <details><summary>click here to view steps</summary>
+---
+<a name="anchor"></a>
+**title**
 
+![Image Desc](image_path.png)
+
+<details><summary>click here to view steps</summary>
+
+1. step 1
+
+    ```
+    code here
+    ```
+ 
+[Back to 'title' solution](#anchor)
+</details>
+
+[Back to the top](#top)
 1. Calculate average of reading scores by grade 
     
     ```
@@ -435,6 +452,58 @@ Repeat the above breakdown, but this time group schools based on school type (Ch
 
 [Back to the top](#top)
 
+---
+<a name="scores_by_school_spending"></a>
+**Scores by School Spending**
 
+![Image Desc](Images/07_scores_by_school_spending.png)
 
+<details><summary>click here to view steps</summary>
 
+1. Create bins
+
+    ```
+    bins = [0, 584.999, 614.999, 644.999, 999999]
+    group_name = ['< $585', '$585 - 614', '$615 - 644', '> $644']
+    school_students_df['spending_bins'] = pd.cut(school_students_df['budget']/school_students_df['size'], bins, labels = group_name)
+    by_spending = school_students_df.groupby('spending_bins')
+    ```
+2. Calculate average scores and group by `spending_bins`
+
+    ```
+    avg_math = by_spending['math_score'].mean()
+    avg_read = by_spending['reading_score'].mean()
+    pass_math = school_students_df[school_students_df['math_score'] >= 70].groupby('spending_bins')['Student ID'].count()/by_spending['Student ID'].count()
+    pass_read = school_students_df[school_students_df['reading_score'] >= 70].groupby('spending_bins')['Student ID'].count()/by_spending['Student ID'].count()
+    overall = school_students_df[(school_students_df['reading_score'] >= 70) & (school_students_df['math_score'] >= 70)].groupby('spending_bins')['Student ID'].count()/by_spending['Student ID'].count()
+    ```
+
+3. Assign values to datafrane
+    ```
+    # assignment of values to df
+    scores_by_spend = pd.DataFrame({
+        "Average Math Score": avg_math,
+        "Average Reading Score": avg_read,
+        '% Passing Math': pass_math,
+        '% Passing Reading': pass_read,
+        "Overall Passing Rate": overall          
+    })
+
+4. Set `Per Student Budget` of school as `index`
+    ```
+    scores_by_spend.index.name = "Per Student Budget"
+    scores_by_spend.reset_index(inplace=True)   
+
+5. Format numbers and align headers
+    ```
+    scores_by_spend.style.format({
+        'Average Math Score': '{:.1f}', 
+        'Average Reading Score': '{:.1f}', 
+        '% Passing Math': '{:.1%}', 
+        '% Passing Reading':'{:.1%}', 
+        'Overall Passing Rate': '{:.1%}'}).hide_index() 
+ 
+[Back to 'Scores by School Spending' solution](#scores_by_school_spending)
+</details>
+
+[Back to the top](#top)
