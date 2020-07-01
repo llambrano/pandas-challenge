@@ -10,7 +10,7 @@ Using python scripting language to analyze students' district-wide standardized 
 * [Link to Jupyter Notebook](PyCitySchools/standarized-test-results.ipynb)
 
 ---
-![](/images/education.png)
+![](/Images/education.png)
 ## PyCitySchools 
 
 Creating a Python script for analyzing the financial records of a company. <a name="pycityschools"></a>
