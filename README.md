@@ -312,7 +312,7 @@ Repeat the above breakdown, but this time group schools based on school type (Ch
                            'Overall Passing Rate': '{:.1%}'})
     ```
  
-[Bottom Performing Schools (By % Overall Passing)](#top_schools)
+[BBack to 'Top Performing Schools' solution)](#top_schools)
 </details>
 
 [Back to the top](#top)
@@ -325,15 +325,13 @@ Repeat the above breakdown, but this time group schools based on school type (Ch
 
 <details><summary>click here to view steps</summary>
 
-1. step 1
-    
-    1. Get bottom schools by `overall passing rate`
+1. Get bottom schools by `overall passing rate`
 
     ```
     bottom_5 = summary_sc.sort_values('Overall Passing Rate', ascending = True)
     ```
 
-    2. Format dataframe numbers 
+2. Format dataframe numbers 
 
     ```bottom_5.head(5).style.format({'Total Students': '{:,}',
                            'Total School Budget': '${:,}', 
@@ -346,7 +344,7 @@ Repeat the above breakdown, but this time group schools based on school type (Ch
                            'Overall Passing Rate': '{:.1%}'})
     ```
 
-[Back to 'Bottom Schools' solution](#bottom_schools)
+[Back to 'Bottom Performing Schools' solution](#bottom_schools)
 </details>
 
 [Back to the top](#top)
@@ -359,9 +357,8 @@ Repeat the above breakdown, but this time group schools based on school type (Ch
 
 <details><summary>click here to view steps</summary>
 
-1. step 1
-    
-    1. Calculate average of math scores by grade 
+1. Calculate average of math scores by grade 
+
     ```
     ninth_math = students_df.loc[students_df['grade'] == '9th'].groupby('school_name')['math_score'].mean()
     tenth_math = students_df.loc[students_df['grade'] == '10th'].groupby('school_name')['math_score'].mean()
@@ -376,13 +373,13 @@ Repeat the above breakdown, but this time group schools based on school type (Ch
     })
     ```
 
-    2. Assign values to dataframe and set index to `school name`
+2. Assign values to dataframe and set index to `school name`
     ```
     math_scores = math_scores[['9th', '10th', '11th', '12th']]
     math_scores.index.name = "school_name"
     ```
 
-    3. Format numners 
+3. Format numners 
     ```
     math_scores.style.format({'9th': '{:.1f}', 
                           "10th": '{:.1f}', 
