@@ -120,11 +120,9 @@ Repeat the above breakdown, but this time group schools based on school type (Ch
 
 <ins>Final Output</ins>
 
-![School Summary](/images/01_district_summary.png)
+![School Summary](images/01_district_summary.png)
 
 <details><summary>click arrow down to view steps</summary>
-
-<ins>Steps</ins>
 
 1. Import modules, read source files
 
