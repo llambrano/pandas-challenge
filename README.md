@@ -280,8 +280,39 @@ Repeat the above breakdown, but this time group schools based on school type (Ch
     summary_sc
     ```
 
-
 [Back to School Summary solution](#school_summary)
+</details>
+
+[Back to the top](#top)
+
+---
+<a name="top_schools"></a>
+**Top Performing Schools (By % Overall Passing)**
+
+![Image Desc](Images/03_top_schools.png)
+
+<details><summary>click here to view steps</summary>
+
+1. Get top schools by `overall passing rate`
+    
+    ```
+    top_5 = summary_sc.sort_values('Overall Passing Rate', ascending = False)
+    ```
+
+2. Format dataframe numbers 
+    ```
+    top_5.head(5).style.format({'Total Students': '{:,}',
+                           'Total School Budget': '${:,}', 
+                           'Per Student Budget': '${:.0f}', 
+                           'Average Math Score': '{:.1f}', 
+                           'Average Reading Score': '{:.1f}', 
+                           'Total School Budget': '${:,}', 
+                           '% Passing Math': '{:.1%}', 
+                           '% Passing Reading': '{:.1%}', 
+                           'Overall Passing Rate': '{:.1%}'})
+    ```
+ 
+[Back to 'title' solution](#top_schools)
 </details>
 
 [Back to the top](#top)
