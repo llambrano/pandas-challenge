@@ -312,7 +312,7 @@ Repeat the above breakdown, but this time group schools based on school type (Ch
                            'Overall Passing Rate': '{:.1%}'})
     ```
  
-[BBack to 'Top Performing Schools' solution)](#top_schools)
+[Back to 'Top Performing Schools' solution)](#top_schools)
 </details>
 
 [Back to the top](#top)
@@ -387,7 +387,7 @@ Repeat the above breakdown, but this time group schools based on school type (Ch
                           "12th": "{:.1f}"})
     ```
  
-[Back to 'title' solution](#math_scores_by_grade)
+[Back to 'Math Scores by Grade' solution](#math_scores_by_grade)
 </details>
 
 [Back to the top](#top)
