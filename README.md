@@ -379,7 +379,7 @@ Repeat the above breakdown, but this time group schools based on school type (Ch
     math_scores.index.name = "school_name"
     ```
 
-3. Format numners 
+3. Format numbers 
     ```
     math_scores.style.format({'9th': '{:.1f}', 
                           "10th": '{:.1f}', 
