@@ -120,7 +120,7 @@ Repeat the above breakdown, but this time group schools based on school type (Ch
 
 ![School Summary](Images/01_district_summary.png)
 
-<details><summary>click here view steps</summary>
+<details><summary>click here to view steps</summary>
 
 1. Import modules, read source files
 
@@ -205,7 +205,7 @@ Repeat the above breakdown, but this time group schools based on school type (Ch
 <a name="school_summary"></a>
 **School Summary**
 
-![Files Combined](Images/01a_combined_files.png)
+![school summary](Images/02_school_summary.png)
 
 <details><summary>click here to view steps</summary>
 
@@ -250,7 +250,7 @@ Repeat the above breakdown, but this time group schools based on school type (Ch
 
 3. Assign values to dataframe
 
-    '''
+    ```
     summary_sc = pd.DataFrame({
         'School Type': sc_type, 
         'Total Students' : sc_students,
@@ -289,7 +289,7 @@ Repeat the above breakdown, but this time group schools based on school type (Ch
 <a name="top_schools"></a>
 **Top Performing Schools (By % Overall Passing)**
 
-![Image Desc](Images/03_top_schools.png)
+![Top Schools](Images/03_top_schools.png)
 
 <details><summary>click here to view steps</summary>
 
@@ -312,7 +312,87 @@ Repeat the above breakdown, but this time group schools based on school type (Ch
                            'Overall Passing Rate': '{:.1%}'})
     ```
  
-[Back to 'title' solution](#top_schools)
+[Bottom Performing Schools (By % Overall Passing)](#top_schools)
 </details>
 
 [Back to the top](#top)
+
+---
+<a name="bottom_schools"></a>
+**Bottom Performing Schools (By % Overall Passing)**
+
+![Bottom Schools](Images/04_bottom_schools.png)
+
+<details><summary>click here to view steps</summary>
+
+1. step 1
+    
+    1. Get bottom schools by `overall passing rate`
+
+    ```
+    bottom_5 = summary_sc.sort_values('Overall Passing Rate', ascending = True)
+    ```
+
+    2. Format dataframe numbers 
+
+    ```bottom_5.head(5).style.format({'Total Students': '{:,}',
+                           'Total School Budget': '${:,}', 
+                           'Per Student Budget': '${:.0f}', 
+                           'Average Math Score': '{:.1f}', 
+                           'Average Reading Score': '{:.1f}', 
+                           'Total School Budget': '${:,}', 
+                           '% Passing Math': '{:.1%}', 
+                           '% Passing Reading': '{:.1%}', 
+                           'Overall Passing Rate': '{:.1%}'})
+    ```
+
+[Back to 'Bottom Schools' solution](#bottom_schools)
+</details>
+
+[Back to the top](#top)
+
+---
+<a name="math_scores_by_grade"></a>
+**Math Scores by Grade**
+
+![Image Desc](Images/05_math_scores_by_grade.png)
+
+<details><summary>click here to view steps</summary>
+
+1. step 1
+    
+    1. Calculate average of math scores by grade 
+    ```
+    ninth_math = students_df.loc[students_df['grade'] == '9th'].groupby('school_name')['math_score'].mean()
+    tenth_math = students_df.loc[students_df['grade'] == '10th'].groupby('school_name')['math_score'].mean()
+    eleventh_math = students_df.loc[students_df['grade'] == '11th'].groupby('school_name')['math_score'].mean()
+    twelfth_math = students_df.loc[students_df['grade'] == '12th'].groupby('school_name')['math_score'].mean()
+
+    math_scores = pd.DataFrame({
+            '9th': ninth_math,
+            '10th': tenth_math,
+            '11th': eleventh_math,
+            '12th': twelfth_math
+    })
+    ```
+
+    2. Assign values to dataframe and set index to `school name`
+    ```
+    math_scores = math_scores[['9th', '10th', '11th', '12th']]
+    math_scores.index.name = "school_name"
+    ```
+
+    3. Format numners 
+    ```
+    math_scores.style.format({'9th': '{:.1f}', 
+                          "10th": '{:.1f}', 
+                          "11th": "{:.1f}", 
+                          "12th": "{:.1f}"})
+    ```
+ 
+[Back to 'title' solution](#math_scores_by_grade)
+</details>
+
+[Back to the top](#top)
+
+
