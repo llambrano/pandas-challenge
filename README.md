@@ -52,6 +52,8 @@ Create an overview table that summarizes key metrics about each school, includin
 * % Passing Reading (The percentage of students that passed reading.)
 * % Overall Passing (The percentage of students that passed math and reading.)
 
+[view solution](#school_summary)
+
 ---
 **Top Performing Schools (By % Overall Passing)**
 
@@ -194,15 +196,20 @@ Repeat the above breakdown, but this time group schools based on school type (Ch
     summary_df
     ```
 
+[Back to solution](#summary_district)
 </details>
 
-[Back to solution](#summary_district)
+[Back to the top](#top)
 
 ---
+<a name="school_summary"></a>
 **School Summary**
 
-<ins>Final Output</ins>
-
 ![Files Combined](Images/02_school_summary.png)
+
+<details><summary>click arrow down to view steps</summary>
+
+[Back to solution](#school_summary)
+</details>
 
 [Back to the top](#top)
