@@ -632,10 +632,8 @@ Repeat the above breakdown, but this time group schools based on school type (Ch
     This is conterintuitive, but it seems that schools with larger budgets have lower students' scores overall. The overall passing score for schools with less than $580 of budget per student was 90.6%, compared with only 53% overall passing score in those schools with budgets above $644 per student. 
 
     ![Image Desc](Images/07_scores_by_school_spending_notes.png)
-
-    07_scores_by_school_spending_notes.png
  
-[Back to `Comments` ](#comments)
+[Back to Comments](#comments)
 </details>
 
 [Back to the top](#top)
