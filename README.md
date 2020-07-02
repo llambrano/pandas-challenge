@@ -83,12 +83,14 @@ Create a table that highlights the bottom 5 performing schools based on % Overal
 
 Create a table that lists the average Math Score for students of each grade level (9th, 10th, 11th, 12th) at each school.
 
-[view solution](#bottom_schools)
+[view solution](#math_scores_by_grade)
 
 ---
 **Reading Scores by Grade**
 
 Create a table that lists the average Reading Score for students of each grade level (9th, 10th, 11th, 12th) at each school.
+
+[view solution](#reading_scores_by_grade)
 
 ---
 **Scores by School Spending**
@@ -101,15 +103,21 @@ Create a table that breaks down school performances based on average Spending Ra
 * % Passing Reading (The percentage of students that passed reading.)
 * % Overall Passing (The percentage of students that passed math and reading.)
 
+[view solution](#scores_by_school_spending)
+
 ---
 **Scores by School Size**
 
 Repeat the above breakdown, but this time group schools based on a reasonable approximation of school size (Small, Medium, Large).
 
+[view solution](#scores_by_school_size)
+
 ---
 **Scores by School Type**
 
 Repeat the above breakdown, but this time group schools based on school type (Charter vs. District).
+
+[view solution](#scores_by_school_type)
 
 ---
 **Observable Trends**
