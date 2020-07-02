@@ -619,8 +619,6 @@ Repeat the above breakdown, but this time group schools based on school type (Ch
 <a name="comments"></a>
 **Comments**
 
-<details><summary>click here to view comments</summary>
-
 1. Students perform better in charter schools than district schools
 
     Based on this data analysis, it seems charter school education is better than district school education. In charter schools students performed a lot better in math and reading. Both of these metrics are above 80 for charter schools, buf only on the high seventies for district schools. 
@@ -634,6 +632,5 @@ Repeat the above breakdown, but this time group schools based on school type (Ch
     ![Image Desc](Images/07_scores_by_school_spending_notes.png)
  
 [Back to Comments](#comments)
-</details>
 
 [Back to the top](#top)
