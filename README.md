@@ -126,6 +126,8 @@ Repeat the above breakdown, but this time group schools based on school type (Ch
 
 [Back to the top](#top)
 
+[view comments](#comments)
+
 ---
 > ### Solution 
 ---
@@ -609,6 +611,31 @@ Repeat the above breakdown, but this time group schools based on school type (Ch
     ```
  
 [Back to 'Scores by School type' solution](#scores_by_school_type)
+</details>
+
+[Back to the top](#top)
+
+---
+<a name="comments"></a>
+**Comments**
+
+<details><summary>click here to view comments</summary>
+
+1. Students perform better in charter schools than district schools
+
+    Based on this data analysis, it seems charter school education is better than district school education. In charter schools students performed a lot better in math and reading. Both of these metrics are above 80 for charter schools, buf only on the high seventies for district schools. 
+
+    ![Image Desc](Images/09_scores_by_school_type_note.png)
+
+2. Schools with lower budgets do better than richer schools
+
+    This is conterintuitive, but it seems that schools with larger budgets have lower students' scores overall. The overall passing score for schools with less than $580 of budget per student was 90.6%, compared with only 53% overall passing score in those schools with budgets above $644 per student. 
+
+    ![Image Desc](Images/07_scores_by_school_spending_notes.png)
+
+    07_scores_by_school_spending_notes.png
+ 
+[Back to `Comments` ](#comments)
 </details>
 
 [Back to the top](#top)
